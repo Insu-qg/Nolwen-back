@@ -400,34 +400,65 @@ export interface ApiContactContact extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiSectionSection extends Struct.CollectionTypeSchema {
-  collectionName: 'sections';
+export interface ApiEventEvent extends Struct.CollectionTypeSchema {
+  collectionName: 'events';
   info: {
-    displayName: 'Section';
-    pluralName: 'sections';
-    singularName: 'section';
+    description: '';
+    displayName: 'Event';
+    pluralName: 'events';
+    singularName: 'event';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    content: Schema.Attribute.Text;
+    color: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    date: Schema.Attribute.Date;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
+      Schema.Attribute.Private;
+    pdf: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiResourceResource extends Struct.CollectionTypeSchema {
+  collectionName: 'resources';
+  info: {
+    description: '';
+    displayName: 'Resource';
+    pluralName: 'resources';
+    singularName: 'resource';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::section.section'
+      'api::resource.resource'
     > &
       Schema.Attribute.Private;
-    order: Schema.Attribute.Integer;
+    order: Schema.Attribute.Integer & Schema.Attribute.Required;
+    pdf: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
-    type: Schema.Attribute.Enumeration<
-      ['forme1', 'forme2', 'forme3', 'forme4', 'forme5']
-    >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -944,7 +975,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::contact.contact': ApiContactContact;
-      'api::section.section': ApiSectionSection;
+      'api::event.event': ApiEventEvent;
+      'api::resource.resource': ApiResourceResource;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
