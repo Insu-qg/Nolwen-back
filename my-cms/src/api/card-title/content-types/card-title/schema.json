@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "card_titles",
+  "info": {
+    "singularName": "card-title",
+    "pluralName": "card-titles",
+    "displayName": "CardTitle"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

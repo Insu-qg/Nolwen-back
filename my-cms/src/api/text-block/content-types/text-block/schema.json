@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "text_blocks",
+  "info": {
+    "singularName": "text-block",
+    "pluralName": "text-blocks",
+    "displayName": "TextBlock"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "text"
+    }
+  }
+}
