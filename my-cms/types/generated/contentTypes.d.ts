@@ -656,6 +656,34 @@ export interface ApiPhonePhone extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPortfolioPortfolio extends Struct.CollectionTypeSchema {
+  collectionName: 'portfolios';
+  info: {
+    displayName: 'Portfolio';
+    pluralName: 'portfolios';
+    singularName: 'portfolio';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::portfolio.portfolio'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiResourceResource extends Struct.CollectionTypeSchema {
   collectionName: 'resources';
   info: {
@@ -1298,6 +1326,7 @@ declare module '@strapi/strapi' {
       'api::footer-title.footer-title': ApiFooterTitleFooterTitle;
       'api::mention-legal.mention-legal': ApiMentionLegalMentionLegal;
       'api::phone.phone': ApiPhonePhone;
+      'api::portfolio.portfolio': ApiPortfolioPortfolio;
       'api::resource.resource': ApiResourceResource;
       'api::social-media.social-media': ApiSocialMediaSocialMedia;
       'api::text-block.text-block': ApiTextBlockTextBlock;
