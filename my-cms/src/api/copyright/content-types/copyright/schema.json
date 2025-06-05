@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "copyrights",
+  "info": {
+    "singularName": "copyright",
+    "pluralName": "copyrights",
+    "displayName": "Copyright"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "text": {
+      "type": "string"
+    }
+  }
+}

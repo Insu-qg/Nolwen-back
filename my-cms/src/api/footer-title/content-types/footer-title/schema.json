@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "footer_titles",
+  "info": {
+    "singularName": "footer-title",
+    "pluralName": "footer-titles",
+    "displayName": "FooterTitle"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "titleId": {
+      "type": "integer"
+    }
+  }
+}

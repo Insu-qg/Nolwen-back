@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mention_legals",
+  "info": {
+    "singularName": "mention-legal",
+    "pluralName": "mention-legals",
+    "displayName": "MentionLegal"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}
